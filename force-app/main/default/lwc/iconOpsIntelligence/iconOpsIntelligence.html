@@ -1,0 +1,50 @@
+<template>
+    <lightning-card title="Operations Intelligence" icon-name="standard:dashboard">
+        <div class="slds-m-around_medium">
+            <template if:true={loading}>
+                <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+            </template>
+            <template if:false={loading}>
+                <div class="slds-grid slds-gutters slds-wrap">
+                    <!-- Health Score -->
+                    <div class="slds-col slds-size_1-of-3 slds-p-around_small">
+                        <div class="slds-box slds-text-align_center">
+                            <p class="slds-text-title_caps slds-m-bottom_xx-small">Pipeline Health</p>
+                            <p class="slds-text-heading_large">{healthScore}</p>
+                            <p class="slds-text-body_small">{healthGrade}</p>
+                        </div>
+                    </div>
+                    <!-- Win Rate -->
+                    <div class="slds-col slds-size_1-of-3 slds-p-around_small">
+                        <div class="slds-box slds-text-align_center">
+                            <p class="slds-text-title_caps slds-m-bottom_xx-small">Win Rate</p>
+                            <p class="slds-text-heading_large">{winRate}%</p>
+                            <p class="slds-text-body_small">{winRateTrend}</p>
+                        </div>
+                    </div>
+                    <!-- Data Quality -->
+                    <div class="slds-col slds-size_1-of-3 slds-p-around_small">
+                        <div class="slds-box slds-text-align_center">
+                            <p class="slds-text-title_caps slds-m-bottom_xx-small">Data Quality</p>
+                            <p class="slds-text-heading_large">{dataQualityGrade}</p>
+                            <p class="slds-text-body_small">{dataQualityNote}</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- CTA -->
+                <template if:true={showCta}>
+                    <div class="slds-m-top_medium slds-box slds-theme_info">
+                        <p>{ctaMessage}</p>
+                        <lightning-button label={ctaLabel} onclick={handleCtaClick} variant="brand" class="slds-m-top_small"></lightning-button>
+                    </div>
+                </template>
+                <!-- Attribution -->
+                <div class="slds-m-top_small slds-text-align_right">
+                    <a href="https://theicon.ai?ref=salesforce-lwc" target="_blank" class="slds-text-body_small">
+                        Powered by ICON BusinessOS
+                    </a>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>
